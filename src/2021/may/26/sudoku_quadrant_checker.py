@@ -27,7 +27,7 @@ def quad(i, j):
     else:
       return 9
 
-def sudokuQuadrantChecker(strArray):
+def sudoku_quadrant_checker(strArray):
   errors = set()
   legal = True
   for i in range(9): # remove all extra characters
