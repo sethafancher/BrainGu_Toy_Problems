@@ -28,11 +28,3 @@ def kaprekars_constant(input):
     resultStr = str(result)
     iterations += 1
   return iterations
-
-
-def main():
-    str = "8774"
-    print(kaprekars_constant(str))
-  
-if __name__ == '__main__':
-    main()
