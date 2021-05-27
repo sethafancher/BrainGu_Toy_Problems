@@ -1,5 +1,38 @@
-# Have the function KaprekarsConstant(num) take the num parameter being passed which will be a 4-digit number with at least two distinct digits. Your program should perform the following routine on the number: Arrange the digits in descending order and in ascending order (adding zeroes to fit it to a 4-digit number), and subtract the smaller number from the bigger number. Then repeat the previous step. Performing this routine will always cause you to reach a fixed number: 6174. Then performing the routine on 6174 will always give you 6174 (7641 - 1467 = 6174). Your program should return the number of times this routine must be performed until 6174 is reached. For example: if num is 3524 your program should return 3 because of the following steps: (1) 5432 - 2345 = 3087, (2) 8730 - 0378 = 8352, (3) 8532 - 2358 = 6174.
+# Have the function KaprekarsConstant(num) take the num parameter being passed which will be a 4-digit number with at least two distinct digits. 
+# Your program should perform the following routine on the number: Arrange the digits in descending order and in ascending order 
+# (adding zeroes to fit it to a 4-digit number), and subtract the smaller number from the bigger number. 
+# Then repeat the previous step. Performing this routine will always cause you to reach a fixed number: 6174. 
+# Then performing the routine on 6174 will always give you 6174 (7641 - 1467 = 6174). Your program should return the number of times this routine must be performed until 6174 is reached. 
+# For example: if num is 3524 your program should return 3 because of the following steps: (1) 5432 - 2345 = 3087, (2) 8730 - 0378 = 8352, (3) 8532 - 2358 = 6174.
 
-def kaprekars_constant(str):
-  # code goes here
-  return str
+def kaprekars_constant(input):
+  iterations = 0
+  resultStr = input
+  while(resultStr != "6174"):
+    ascend = sorted(str(resultStr))
+    descend = sorted(str(resultStr), reverse=True)
+    ascendStr = ""
+    descendStr = ""
+    for c in ascend:
+      ascendStr += c
+    for c in descend:
+      descendStr += c
+    while(len(ascendStr) < 4):
+      ascendStr = "0" + ascendStr
+    while(len(descendStr) < 4):
+      descendStr += "0"
+    if int(ascendStr) > int(descendStr):
+      result = int(ascendStr) - int(descendStr)
+    else:
+      result = int(descendStr) - int(ascendStr)
+    resultStr = str(result)
+    iterations += 1
+  return iterations
+
+
+def main():
+    str = "8774"
+    print(kaprekars_constant(str))
+  
+if __name__ == '__main__':
+    main()

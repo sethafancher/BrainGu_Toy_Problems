@@ -19,7 +19,7 @@ def test_six():
     assert kaprekars_constant(7614) == 1
 
 def test_seven():
-    assert kaprekars_constant(8774) == 812
+    assert kaprekars_constant(8774) == 4
 
 def test_eight():
     assert kaprekars_constant(7847) == 4
