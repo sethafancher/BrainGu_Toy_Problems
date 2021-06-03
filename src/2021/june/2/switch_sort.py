@@ -14,4 +14,24 @@
 # The array arr will at most contain five elements and will contain at least two elements.
 
 def switch_sort(str):
-  numSwitches = 0
+  steps = 0
+  notSorted = True
+  while notSorted:
+    notSorted = False
+    for i in range(len(str)):
+      if ((str[i] - 1) != i):
+        notSorted = True
+      if (str[i] - 1) != i and str[i] != len(str):
+        if ((i + str[i]) % len(str)) == (str[i] - 1):
+          temp = str[i]
+          str[i] = str[((i + str[i]) % len(str))]
+          str[((i + temp) % len(str))] = temp
+          steps += 1
+        elif ((i - str[i]) % len(str)) == (str[i] - 1):
+          temp = str[i]
+          str[i] = str[((i - str[i]) % len(str))]
+          str[((i - temp) % len(str))] = temp
+          steps += 1
+        else:
+          pass
+  return steps
